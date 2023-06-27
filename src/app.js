@@ -12,6 +12,4 @@ app.get("/", function(request, responce){
     responce.sendFile(fileSys.getHtmlUrl("", "index"));
 });
 
-
-
 app.listen(8888);

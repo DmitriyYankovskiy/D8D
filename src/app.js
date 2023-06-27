@@ -5,7 +5,7 @@ const postgresql = require("pg");
 
 const app = express();
 
-app.use("/www", express.static(__dirname+"/www"));
+app.use("/www", express.static(__dirname + "/www"));
 
 app.get("/", function(request, responce){
     console.log("/");

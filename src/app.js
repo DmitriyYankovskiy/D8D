@@ -7,7 +7,7 @@ const app = express();
 
 app.use("/www", express.static(global.__dirname + "/www"));
 
-app.get("/", function(request, responce){    
+app.get("/", function(request, responce){     
     responce.sendFile(fileSys.getHtmlUrl("", "index"));
 });
 

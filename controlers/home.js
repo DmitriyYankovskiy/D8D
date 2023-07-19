@@ -3,7 +3,7 @@ const ejs = require("ejs");
 
 let router = express.Router();
 
-router.use("/", (request, responce) => {
+router.use("/ind", (request, responce) => {
     responce.render("home/index", {title: "home page"});
 });
 

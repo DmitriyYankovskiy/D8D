@@ -11,21 +11,21 @@ const host = "localhost";
 const httpPort = 8788;
 const wsPort = 8787;
 const d8dconfig = JSON.parse(fs.readFileSync(os.homedir()+'/.d8dconfig', 'utf8'));
-4
 const app = express();
 const server = http.createServer(app);
 const wss = new ws.Server({port: wsPort});
 
-const client=psqlm.getClient(d8dconfig.dbuser, 
+const client = psqlm.getClient(d8dconfig.dbuser, 
                              d8dconfig.dbhost, 
                              d8dconfig.dbname, 
                              d8dconfig.dbpassword, 
                              d8dconfig.dbport
-);
+)
 
 wss.on("connection", ws => {
     console.log("new ws client");
     ws.on("message", message => { 
+
         console.log(message.toString());
     });
 });
@@ -35,11 +35,11 @@ app.use("/www", express.static(global.__basedirname + "/www"));
 app.use("/home", require("../controlers/home.js"));
 
 
-psqlm.createTable(client,"testable",{name:"varchar", id:"int", color:"varchar"});
+/*psqlm.createTable(client,"testable",{name:"varchar", id:"int", color:"varchar"});
 psqlm.insertInto(client,"testable",{id:5,color:"blue"});
-console.log(psqlm.getFrom(client,["*"],"testable"));
+psqlm.get(client,["*"],"2 = 3","testable").then(console.log);
 psqlm.deleteStrokes(client,"testable","*");
-psqlm.endClient(client);
+psqlm.closeClient(client);*/
 
 server.listen(httpPort, host, ()=>{
     console.log("server was started");

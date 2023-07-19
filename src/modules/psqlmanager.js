@@ -1,5 +1,7 @@
+const {Client} = require('pg');
+
 module.exports.getClient = (user, host, database, password, port) => {
-    const client = new require('pg')({ 
+    const client = new Client({ 
         user: user,
         host: host,
         database: database,
@@ -10,24 +12,21 @@ module.exports.getClient = (user, host, database, password, port) => {
     return client;
 };
 
-module.exports.getFrom = (client, columns, tablename) => {
+module.exports.get = (client, columns, where, tablename) => {
     let query = `SELECT `;
-    let answer;
     for(let i in columns){
         query+=`${columns[i]}, `;
     }
     query=query.slice(0,-2);
-    query+=` FROM ${tablename};`;
+    query+=` FROM ${tablename}`;
+    if(where!=""){
+        query+=` WHERE ${where};`;
+    }else{
+        query+=`;`;
+    }
     //console.log(query);
-    client.query(query, (err, res,ans) => { 
-        if (err) {
-            console.error(err); 
-            return; 
-        } 
-        console.log(`Columns from ${tablename} is successfully got`);
-        answer=res;
-    }); 
-    return answer;
+    
+    return client.query(query);
 };
 
 module.exports.createTable = (client, tablename, typesOfColumns) => {
@@ -38,7 +37,7 @@ module.exports.createTable = (client, tablename, typesOfColumns) => {
     query=query.slice(0,-2);
     query+=" );";
     
-    client.query(query, (err, _) => { 
+    client.query(query, (err) => { 
         if (err) {
             console.error(err); 
             return; 
@@ -48,7 +47,7 @@ module.exports.createTable = (client, tablename, typesOfColumns) => {
 };
 
 module.exports.closeClient = (client) => {
-    client.query(";", (err, res) => {  
+    client.query(";", (err) => {  
         if (err) {
             console.error(err); 
             return; 
@@ -76,7 +75,7 @@ module.exports.insertInto = (client, tablename, newObject) => {
     }
     query=query.slice(0,-2);
     query+=" );";
-    client.query(query, (err,_) => { 
+    client.query(query, (err) => { 
         if (err) { 
             console.error(err); 
             return; 
@@ -102,6 +101,4 @@ module.exports.deleteStrokes = (client, tablename, where) => {
         console.log('Strokes delete successful'); 
     });
 };
-
-module.exports=exported;
 

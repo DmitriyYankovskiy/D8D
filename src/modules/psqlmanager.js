@@ -1,6 +1,6 @@
 const {Client} = require('pg');
 
-module.exports.getClient = (user, host, database, password, port) => {
+module.exports.openClient = (user, host, database, password, port) => {
     const client = new Client({ 
         user: user,
         host: host,
@@ -12,19 +12,24 @@ module.exports.getClient = (user, host, database, password, port) => {
     return client;
 };
 
-module.exports.get = (client, columns, where, tablename) => {
+module.exports.getObject = (client, tablename,  key, value, columns) => {
+
     let query = `SELECT `;
     for(let i in columns){
-        query+=`${columns[i]}, `;
+        query += `${columns[i]}, `;
     }
-    query=query.slice(0,-2);
-    query+=` FROM ${tablename}`;
-    if(where!=""){
-        query+=` WHERE ${where};`;
+    query = query.slice(0,-2);
+    query += ` FROM ${tablename}`;
+
+    if (typeof value == "string"){
+        value = `'${value}'`;
+    }
+
+    if(where != ""){
+        query += ` WHERE ${key} = ${value};`;
     }else{
-        query+=`;`;
+        query += `;`;
     }
-    //console.log(query);
     
     return client.query(query);
 };
@@ -32,13 +37,13 @@ module.exports.get = (client, columns, where, tablename) => {
 module.exports.createTable = (client, tablename, typesOfColumns) => {
     let query = `CREATE TABLE ${tablename} ( `;
     for(let i in typesOfColumns){
-        query+=`${i} ${typesOfColumns[i]}, `;
+        query += `${i} ${typesOfColumns[i]}, `;
     }
-    query=query.slice(0,-2);
-    query+=" );";
+    query = query.slice(0,-2);
+    query += " );";
     
     client.query(query, (err) => { 
-        if (err) {
+        if(err){
             console.error(err); 
             return; 
         } 
@@ -48,7 +53,7 @@ module.exports.createTable = (client, tablename, typesOfColumns) => {
 
 module.exports.closeClient = (client) => {
     client.query(";", (err) => {  
-        if (err) {
+        if(err){
             console.error(err); 
             return; 
         } 
@@ -57,44 +62,51 @@ module.exports.closeClient = (client) => {
     });
 };
 
-module.exports.insertInto = (client, tablename, newObject) => {
+module.exports.addObject = (client, tablename, newObject) => {
     let query = ` 
-    INSERT INTO ${tablename} ( 
-    `;
+                INSERT INTO ${tablename} ( 
+                `;
     for(let i in newObject){
-        query+=`${i}, `;
+        query += `${i}, `;
     }
-    query=query.slice(0,-2);
-    query+=" ) VALUES (";
+
+    query = query.slice(0,-2);
+    query += " ) VALUES (";
     for(let i in newObject){
-        if(typeof newObject[i] =="string"){
-            query+=`'${newObject[i]}', `;
+        if(typeof newObject[i] == "string"){
+            query += `'${newObject[i]}', `;
         }else{
-            query+=`${newObject[i]}, `;
+            query += `${newObject[i]}, `;
         }
     }
-    query=query.slice(0,-2);
-    query+=" );";
+    query = query.slice(0,-2);
+    query += " );";
     client.query(query, (err) => { 
-        if (err) { 
+        if(err){ 
             console.error(err); 
             return; 
         } 
         console.log(`Elements in table ${tablename} is successfully insert`); 
     }); 
 };
-module.exports.deleteStrokes = (client, tablename, where) => {
+module.exports.deleteObject = (client, tablename, key, value = "") => {
 
-    let query = ` 
-    DELETE FROM ${tablename} 
-    WHERE ${where} ;
-    `; 
-    if(where=="*"){
+    let query;
+
+    if(typeof value == "string")
+        value = `'${value}'`;
+
+    if(key=="*"){
         query=`DELETE FROM ${tablename};`
+    }else{
+        query = `
+                DELETE FROM ${tablename} 
+                WHERE ${key} = ${value};
+                `; 
     }
 
     client.query(query, (err, res) => { 
-        if (err) { 
+        if(err){ 
             console.error(err); 
             return; 
         } 

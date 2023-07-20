@@ -1,0 +1,19 @@
+
+Hello
+<script type="text/javascript">
+    const url = 'ws://localhost:8787';
+    const connection = new WebSocket(url);
+
+    connection.onopen = ()=>{
+        let msg={
+            condition: {
+                key: "id",
+                value: 5
+            }
+        }
+        connection.send(JSON.stringify(msg));
+    };
+    connection.onmessage = (mes)=>{
+        console.log(mes.data);
+    };
+</script>

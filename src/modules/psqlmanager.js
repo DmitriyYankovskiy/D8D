@@ -57,7 +57,7 @@ module.exports.closeClient = (client) => {
             console.error(err); 
             return; 
         } 
-        console.log(`End client`); 
+        console.log(`<database> end client`); 
         client.end();
     });
 };
@@ -86,7 +86,7 @@ module.exports.addObject = (client, tablename, newObject) => {
             console.error(err); 
             return; 
         } 
-        console.log(`Elements in table ${tablename} is successfully insert`); 
+        console.log(`<database> elements in table ${tablename} is successfully insert`); 
     }); 
 };
 module.exports.deleteObject = (client, tablename, key, value = "") => {
@@ -110,7 +110,7 @@ module.exports.deleteObject = (client, tablename, key, value = "") => {
             console.error(err); 
             return; 
         } 
-        console.log('Strokes delete successful'); 
+        console.log('<database> strokes delete successful'); 
     });
 };
 

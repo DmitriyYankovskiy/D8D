@@ -25,7 +25,7 @@ module.exports.getObject = (client, tablename,  key, value, columns) => {
         value = `'${value}'`;
     }
 
-    if(where != ""){
+    if(key != ""){
         query += ` WHERE ${key} = ${value};`;
     }else{
         query += `;`;
@@ -114,3 +114,22 @@ module.exports.deleteObject = (client, tablename, key, value = "") => {
     });
 };
 
+module.exports.setObject = (client, tablename, key, value, columns) => {
+
+    let query = `UPDATE ${tablename} SET `;
+    for(let i in columns){
+        if (typeof columns[i] == "string"){
+            columns[i] = `'${columns[i]}'`;
+        }
+        query += `${i} = ${columns[i]}, `;
+    }
+    query = query.slice(0,-2);
+
+    if(key != ""){
+        query += ` WHERE ${key} = ${value};`;
+    }else{
+        query += `;`;
+    }
+    
+    return client.query(query);
+};

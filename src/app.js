@@ -23,10 +23,10 @@ const client = psqlm.openClient(d8dconfig.dbuser,
 )
 
 wss.on("connection", ws => {
-    console.log("new ws client");
+    console.log(ws);
     ws.on("message", message => { 
-
-        console.log(message.toString());
+        message=JSON.parse(message.toString());
+        //psqlm.getObject(client,"testable",message.condition.key,message.condition.value,["*"]).then((r)=> {console.log(r.rows);ws.send(JSON.stringify(r.rows));});
     });
 });
 
@@ -35,13 +35,13 @@ app.use("/www", express.static(global.__basedirname + "/www"));
 app.use("/home", require("../controlers/home.js"));
 
 
-/*psqlm.createTable(client,"testable",{name:"varchar", id:"int", color:"varchar"});
-psqlm.addObject(client,"testable",{id:5,color:"blue"});
-psqlm.addObject(client,"testable",{id:6,color:"blue"});
-psqlm.getObject(client,"testable","","",["*"]).then((r)=>{console.log(r.rows)});
-psqlm.setObject(client,"testable","id",6,{color: "red", id: -10});
-psqlm.getObject(client,"testable","","",["*"]).then((r)=>{console.log(r.rows)});
-psqlm.deleteObject(client,"testable","*");*/
+//psqlm.createTable(client,"testable",{name:"varchar", id:"int", color:"varchar"});
+///psqlm.addObject(client,"testable",{id:5,color:"blue"});
+///psqlm.addObject(client,"testable",{id:6,color:"blue"});
+//psqlm.getObject(client,"testable","","",["*"]).then((r)=>{console.log(r.rows)});
+///psqlm.setObject(client,"testable","id",6,{color: "red", id: -10});
+//psqlm.getObject(client,"testable","","",["*"]).then((r)=>{console.log(r.rows)});
+//psqlm.deleteObject(client,"testable","*");
 psqlm.closeClient(client);
 
 server.listen(httpPort, host, ()=>{

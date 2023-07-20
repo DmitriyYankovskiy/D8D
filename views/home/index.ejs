@@ -8,7 +8,16 @@
         const connection = new WebSocket(url);
 
         connection.onopen = ()=>{
-            connection.send("hello by ws");
+            let msg={
+                condition: {
+                    key: "id",
+                    value: 5
+                }
+            }
+            connection.send(JSON.stringify(msg));
+        };
+        connection.onmessage = (mes)=>{
+            console.log(mes.data);
         };
     </script>
 </head>

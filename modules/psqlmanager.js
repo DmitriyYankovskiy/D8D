@@ -50,6 +50,16 @@ module.exports.createTable = (client, tablename, typesOfColumns) => {
         console.log(`Table ${tablename} is successfully created`); 
     }); 
 };
+module.exports.dropTable = (client, tablename) => {
+    let query = `DROP TABLE ${tablename};`;
+    client.query(query, (err) => { 
+        if(err){
+            console.error(err); 
+            return; 
+        } 
+        console.log(`Table ${tablename} is successfully dropped`); 
+    }); 
+};
 
 module.exports.closeClient = (client) => {
     client.query(";", (err) => {  

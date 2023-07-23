@@ -36,6 +36,7 @@ app.use("/characters", require("../controlers/characters.js"));
 
 
 psqlm.createTable(client,"characters",{
+    id:"int",
     name:"varchar",
     class:"int",
     level:"varchar",
@@ -68,7 +69,7 @@ psqlm.createTable(client,"characters",{
     animal_handling:"int",
     arcana:"int",
     athletics:"int",
-    deception:"int",
+    deception:"int",''
     history:"int",
     insight:"int",
     intimidation:"int",
@@ -88,10 +89,12 @@ psqlm.createTable(client,"characters",{
     speed:"int",
     vision:"varchar",
 
-    attacks_and_spells:"varchar",
-    features_and_traits:"varchar",
+    spells:"varchar",
+    features:"varchar",
+    traits:"varchar",
     proficience_and_languages:"varchar",
-    inventory_and_equipment:"varchar"
+    items:"varchar",
+    coins:"varchar"
 });
 
 // psqlm.addObject(client,"testable",{id:5,color:"blue"});

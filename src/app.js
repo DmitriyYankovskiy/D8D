@@ -20,8 +20,56 @@ const client = req.psqlm.openClient(d8dconfig.dbuser,
 wss.on("connection", ws => {
     console.log("<websocket> new client");
 
-    ws.on("message", message => { 
+    ws.on("message", message => {
         message=JSON.parse(message.toString());
+        if(message.request=="SEARCH"){
+            let responce=message;
+            if(message.text[0]=="#"){
+                // by id
+                switch(message.type){
+                case "i":
+                    psqlm.getObject(
+                        client,
+                        "item",
+                        "id",
+                        message.condition.text,
+                        message.things
+                    ).then((r)=> {ws.send(responce.answer=JSON.stringify(r.rows));});
+                    break;
+                case "c":
+                    psqlm.getObject(
+                        client,
+                        "characters",
+                        "id",
+                        message.condition.text,
+                        message.things
+                    ).then((r)=> {ws.send(responce.answer=JSON.stringify(r.rows));});
+                    break;
+                }
+            }else{
+                switch(message.type){
+                case "i":
+                    psqlm.getObject(
+                        client,
+                        "item",
+                        "name",
+                        message.condition.text,
+                        message.things
+                    ).then((r)=> {ws.send(responce.answer=JSON.stringify(r.rows));});
+                    break;
+                case "c":
+                    psqlm.getObject(
+                        client,
+                        "characters",
+                        "name",
+                        message.condition.text,
+                        message.things
+                    ).then((r)=> {ws.send(responce.answer=JSON.stringify(r.rows));});
+                    break;
+                }
+            }
+
+        }
         //psqlm.getObject(client,"testable",message.condition.key,message.condition.value,["*"]).then((r)=> {console.log(r.rows);ws.send(JSON.stringify(r.rows));});
     });
 });
@@ -36,13 +84,13 @@ app.use("/characters", require("../controlers/characters.js"));
 
 
 psqlm.createTable(client,"characters",{
-    id:"int",
+    id:"varchar",
     name:"varchar",
-    class:"int",
+    class:"varchar",
     level:"varchar",
-    race:"int",
+    race:"varchar",
     experience:"int",
-    background:"int",
+    background:"varchar",
     aligment:"int",
     prof_bonus:"int",
     armor_class:"int",
@@ -92,11 +140,20 @@ psqlm.createTable(client,"characters",{
     spells:"varchar",
     features:"varchar",
     traits:"varchar",
-    proficience_and_languages:"varchar",
+    proficience:"varchar",
+    languages:"varchar",
     items:"varchar",
     coins:"varchar"
 });
-
+psqlm.createTable(client,"items",{
+    id:"varchar",
+    name:"varchar",
+    type:"varchar",
+    attacks:"varchar",
+    description:"varchar",
+    jsondesc:"varchar",
+    other:"varchar" 
+});
 // psqlm.addObject(client,"testable",{id:5,color:"blue"});
 // psqlm.addObject(client,"testable",{id:6,color:"blue"});
 // psqlm.getObject(client,"testable","id","5",["*"]).then((r)=>{console.log(r.rows)});

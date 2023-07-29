@@ -1,0 +1,47 @@
+html {
+    --std-delay: 16px;
+}
+
+.flex {
+    display: flex;
+}
+
+
+.dir-vert {
+    flex-direction: column;    
+}
+
+.dir-hor {    
+    flex-direction: row;  
+}
+
+.center-align {
+    align-items: center;
+}
+
+.start-align {
+    align-items: start;
+}
+
+.std-margin-vert {
+    margin-bottom: val(--std-delay);
+}
+
+.std-margin-hor {
+    margin-right: val(--std-delay);
+}
+
+.std-fill-flex {
+    flex: 1 0 auto;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+

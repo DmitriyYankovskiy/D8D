@@ -12,4 +12,8 @@ global.req.fs = require('fs');
 global.req.os = require("os");
 
 global.req.ejs = require("ejs");
+
 global.req.psqlm = require('./modules/psqlmanager');
+
+global.config = JSON.parse(global.req.fs.readFileSync(global.req.os.homedir()+'/.d8dconfig', 'utf8'));
+require("./modules/dbconfig");

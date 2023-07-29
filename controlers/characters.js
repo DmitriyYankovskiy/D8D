@@ -2,7 +2,7 @@ const req = global.req;
 let router = req.express.Router();
 
 router.use("/create", (request, responce) => {
-    responce.render("characters/create", {title: "creating new character", layout: 
+    responce.render("characters/create", {title: "create", layout: 
     "characters/layout.ejs"});
 });
 

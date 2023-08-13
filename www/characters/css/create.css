@@ -1,0 +1,13 @@
+main {
+	padding: 30px;
+	display: flex;
+	justify-content: stretch;
+	align-items: stretch;
+}
+
+.character_shit {
+	background-color: red;
+	flex: 1;
+	display; flex;
+	justify-content: stretch;
+}

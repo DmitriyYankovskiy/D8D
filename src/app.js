@@ -9,7 +9,7 @@ const wsPort = 8787;
 const app = req.express();
 const server = req.http.createServer(app);
 
-require('../websocket/database.js').start_server();
+require('../websocket/database.js').start_server(wsPort);
 
 app.set("view engine", "ejs");
 app.use(req.expressLayouts);
@@ -19,7 +19,7 @@ app.use("/www", req.express.static(global.__basedirname + "/www"));
 
 app.use("/characters", require("../controlers/characters.js"));
 
-req.psqlm.closeClient(client);
+
 
 server.listen(httpPort, host, ()=>{
     console.log("server was started");

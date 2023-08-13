@@ -1,11 +1,11 @@
-let req = require("../config.js");
+let req = global.req;
 
 const client = global.db.client;
 
 let wss;
 
-module.exports.start_server = (wsPort, path) => {
-    wss = new req.ws.Server({port: wsPort, path: "database"});
+module.exports.start_server = (wsPort) => {
+    wss = new req.ws.Server({port: wsPort});
     wss.on("connection", ws => {
     console.log("<websocket> new client");
     ws.on("message", message => {

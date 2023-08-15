@@ -12,14 +12,14 @@ module.exports.openClient = (user, host, database, password, port) => {
     return client;
 };
 
-module.exports.getObject = (client, tablename,  key, value, columns) => {
+module.exports.getObject = (client, tableName, key, value, columns) => {
 
     let query = `SELECT `;
     for(let i in columns){
         query += `${columns[i]}, `;
     }
     query = query.slice(0,-2);
-    query += ` FROM ${tablename}`;
+    query += ` FROM ${tableName}`;
 
     if (typeof value == "string"){
         value = `'${value}'`;
@@ -34,8 +34,8 @@ module.exports.getObject = (client, tablename,  key, value, columns) => {
     return client.query(query);
 };
 
-module.exports.createTable = (client, tablename, typesOfColumns) => {
-    let query = `CREATE TABLE ${tablename} ( `;
+module.exports.createTable = (client, tableName, typesOfColumns) => {
+    let query = `CREATE TABLE ${tableName} ( `;
     for(let i in typesOfColumns){
         query += `${i} ${typesOfColumns[i]}, `;
     }
@@ -47,17 +47,17 @@ module.exports.createTable = (client, tablename, typesOfColumns) => {
             console.error(err); 
             return; 
         } 
-        console.log(`Table ${tablename} is successfully created`); 
+        console.log(`Table ${tableName} is successfully created`); 
     }); 
 };
-module.exports.dropTable = (client, tablename) => {
-    let query = `DROP TABLE ${tablename};`;
+module.exports.dropTable = (client, tableName) => {
+    let query = `DROP TABLE ${tableName};`;
     client.query(query, (err) => { 
         if(err){
             console.error(err); 
             return; 
         } 
-        console.log(`Table ${tablename} is successfully dropped`); 
+        console.log(`Table ${tableName} is successfully dropped`); 
     }); 
 };
 
@@ -72,9 +72,9 @@ module.exports.closeClient = (client) => {
     });
 };
 
-module.exports.addObject = (client, tablename, newObject) => {
+module.exports.addObject = (client, tableName, newObject) => {
     let query = ` 
-                INSERT INTO ${tablename} ( 
+                INSERT INTO ${tableName} ( 
                 `;
     for(let i in newObject){
         query += `${i}, `;
@@ -96,10 +96,10 @@ module.exports.addObject = (client, tablename, newObject) => {
             console.error(err); 
             return; 
         } 
-        console.log(`<database> elements in table ${tablename} is successfully insert`); 
+        console.log(`<database> elements in table ${tableName} is successfully insert`); 
     }); 
 };
-module.exports.deleteObject = (client, tablename, key, value = "") => {
+module.exports.deleteObject = (client, tableName, key, value = "") => {
 
     let query;
 
@@ -107,10 +107,10 @@ module.exports.deleteObject = (client, tablename, key, value = "") => {
         value = `'${value}'`;
 
     if(key=="*"){
-        query=`DELETE FROM ${tablename};`
+        query=`DELETE FROM ${tableName};`
     }else{
         query = `
-                DELETE FROM ${tablename} 
+                DELETE FROM ${tableName} 
                 WHERE ${key} = ${value};
                 `; 
     }
@@ -124,9 +124,9 @@ module.exports.deleteObject = (client, tablename, key, value = "") => {
     });
 };
 
-module.exports.setObject = (client, tablename, key, value, columns) => {
+module.exports.setObject = (client, tableName, key, value, columns) => {
 
-    let query = `UPDATE ${tablename} SET `;
+    let query = `UPDATE ${tableName} SET `;
     for(let i in columns){
         if (typeof columns[i] == "string"){
             columns[i] = `'${columns[i]}'`;

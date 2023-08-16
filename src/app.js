@@ -1,4 +1,5 @@
 require("../config.js");
+require("./db-config");
 
 const req = global.req;
 const host = "localhost";

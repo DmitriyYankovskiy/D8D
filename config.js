@@ -1,6 +1,7 @@
 global.__basedirname = __dirname;
 
 global.req = {};
+global.build = {};
 
 global.req.express = require("express");
 global.req.expressLayouts = require("express-ejs-layouts");
@@ -16,5 +17,6 @@ global.req.ejs = require("ejs");
 global.req.psqlm = require("./modules/psql-manager");
 global.req.wsManager = require("./modules/ws-manager");
 
-global.config = JSON.parse(global.req.fs.readFileSync(global.req.os.homedir()+"/.d8dconfig", "utf8"));
-require("./modules/db-config");
+global.build.typeDB = process.argv[0];
+
+global.config = JSON.parse(global.req.fs.readFileSync(global.req.os.homedir() + "/.d8dconfig", "utf8"));

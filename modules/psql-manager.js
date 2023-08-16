@@ -1,4 +1,4 @@
-const {Client} = require('pg');
+const {Client} = require("pg");
 
 module.exports.openClient = (user, host, database, password, port) => {
     const client = new Client({ 

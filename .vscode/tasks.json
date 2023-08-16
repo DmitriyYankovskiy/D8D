@@ -6,7 +6,7 @@
 			"script": "start",
 			"problemMatcher": [],
 			"label": "Run",
-			"detail": "node app.js"
+			"detail": "node app.js norebuild_tables"
 		}
 	]
 }

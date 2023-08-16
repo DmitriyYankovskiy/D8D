@@ -1,24 +1,26 @@
 
-<main class="main">
-    <div class="character_shit">
+<main class = "main">
+    <div class = "character_shit">
         
     </div>
 </main>
 
-<script type="text/javascript">
-    const url = 'ws://localhost:8787';
+<script type = "text/javascript">
+    const url = "ws://localhost:" + wsPort;
     const connection = new WebSocket(url);
 
-    connection.onopen = ()=>{
-        let msg={
-            condition: {
-                key: "id",
-                value: 5
-            }
-        }
+    connection.onopen = () => {
+        let msg = {
+            findObject: "items",
+            id: "ht",
+            type: "search",
+            things: ["description"]
+        };
         connection.send(JSON.stringify(msg));
     };
-    connection.onmessage = (mes)=>{
+
+    connection.onmessage = mes =>{
         console.log(mes.data);
+        connection.close();
     };
 </script>

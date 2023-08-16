@@ -2,8 +2,8 @@ require("../config.js");
 
 const req = global.req;
 const host = "localhost";
-const httpPort = 8788;
-const wsPort = 8787;
+const httpPort = 8878;
+const wsPort = 7777;
 const wsManager = req.wsManager;
 
 const app = req.express();
@@ -22,3 +22,8 @@ wsManager.start(wsPort, require("../websockets/database.js"));
 server.listen(httpPort, host, () => {
     console.log("server was started");
 });  
+
+let stdIn = process.openStdin();
+stdIn.addListener("data", (cin) => {
+    process.exit();
+})

@@ -1,7 +1,7 @@
-let req = global.req;
+let websocket = require(ws);
 
 module.exports.start = (wsPort, path,  controller) => {
-    let wss = new req.ws.Server({port: wsPort, path: path});
+    let wss = new websocket.Server({port: wsPort, path: path});
     wss.on("connection", (ws, request) => {
         console.log(`<websocket> new client ${wsPort}`);
         

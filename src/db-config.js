@@ -1,17 +1,16 @@
-const psqlm = global.req.psqlManager;
+const psqlManager = require("../modules/psql-manager");
 
 const config = global.config;
-const build = global.build;
 
-const client = psqlm.openClient(config.dbuser, 
+const client = psqlManager.openClient(
+    config.dbuser, 
     config.dbhost, 
     config.dbname, 
     config.dbpassword, 
     config.dbport
 );
 
-global.db = {};
-global.db.client = client;
+global.dbClient = client;
 
 let dataBases = [
     {
@@ -98,8 +97,8 @@ let dataBases = [
 for (let i in dataBases) {
     if (build.typeDB == "rebuild_tables") 
     {
-        psqlm.dropTable(client, i.name);
+        psqlManager.dropTable(client, i.name);
     }
 
-    psqlm.createTable(client, i.name, i.columns);
+    psqlManager.createTable(client, i.name, i.columns);
 }

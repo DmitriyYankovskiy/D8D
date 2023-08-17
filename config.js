@@ -1,10 +1,6 @@
 global.__basedirname = __dirname;
 
-global.server = {
-    httpPort: 8878,
-    wsPort: 8877,
-    host: "localhost"
-};
+global.host = "localhost";
 
 global.req = {};
 global.build = {};

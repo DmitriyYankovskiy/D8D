@@ -11,8 +11,11 @@
             "console": "externalTerminal",
             "skipFiles": [
                 "<node_internals>/**"
-            ],
-            "program": "${file}"
+            ],            
+            "program": "src/app.js",
+            "args": [
+                "not_rebuild_tables"
+            ]
         }
     ]
 }

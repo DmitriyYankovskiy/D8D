@@ -1,16 +1,6 @@
 const psqlManager = require("../modules/psql-manager");
 
-const config = global.config;
-
-const client = psqlManager.openClient(
-    config.dbuser, 
-    config.dbhost, 
-    config.dbname, 
-    config.dbpassword, 
-    config.dbport
-);
-
-global.dbClient = client;
+global.psqlManager = psqlManager;
 
 let dataBases = [
     {

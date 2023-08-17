@@ -31,6 +31,7 @@ module.exports.getObject = (client, tableName, key, value, columns) => {
         query += `;`;
     }
     
+
     return client.query(query);
 };
 

@@ -1,4 +1,4 @@
-const psqlm = global.req.psqlm;
+const psqlm = global.req.psqlManager;
 
 const config = global.config;
 const build = global.build;
@@ -96,7 +96,8 @@ let dataBases = [
 
 
 for (let i in dataBases) {
-    if (build.typeDB == "rebuild_tables") {
+    if (build.typeDB == "rebuild_tables") 
+    {
         psqlm.dropTable(client, i.name);
     }
 

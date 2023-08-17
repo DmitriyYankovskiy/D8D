@@ -1,6 +1,6 @@
-let wsPort = global.server.wsPort;
+let req = global.req;
 
-module.exports.start = (path,  controller) => {
+module.exports.start = (wsPort, path,  controller) => {
     let wss = new req.ws.Server({port: wsPort, path: path});
     wss.on("connection", (ws, request) => {
         console.log(`<websocket> new client ${wsPort}`);

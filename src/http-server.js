@@ -2,14 +2,16 @@ let PORT = 8878;
 let HOST = global.host;
 
 const http = require("http");
+const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
 
-const app = req.express();
+const app = express();
 
 app.set("view engine", "ejs");
 app.set("layout", global.__basedirname + "/views");
 
-app.use(req.express.static("./www"));
-app.use(req.expressLayouts);
+app.use(express.static("./www"));
+app.use(expressLayouts);
 
 app.use("/characters", require("../controlers/characters.js"));
 

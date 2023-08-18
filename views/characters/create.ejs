@@ -6,7 +6,7 @@
 </main>
 
 <script type = "text/javascript">
-    const url = `ws://localhost:${wsPort}/database`;
+    const url = `ws://${HOST}:${WS_PORT}/database`;
     const connection = new WebSocket(url);
 
     connection.onopen = () => {

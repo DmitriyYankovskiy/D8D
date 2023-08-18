@@ -1,4 +1,5 @@
 const {Client} = require("pg");
+
 clinet = new Client({ 
     user: global.config.user,
     host: global.config.host,

@@ -7,7 +7,6 @@ let client = new Client({
     password: global.config.password,
     port: global.config.port
 });
-console.log(client);
 client.connect();
 
 global.dbClient = client;

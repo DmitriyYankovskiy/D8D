@@ -10,11 +10,9 @@ module.exports.set = (wsServer, controller) => {
         ws.on("close", () => controller.close());
     });
 
-    process.on("SIGINT", () => {
+    process.on("exit", () => {
         console.log("closing server");
 
-        wsServer.close(() => {
-            process.exit();
-        });
+        wsServer.close();
     });
 };

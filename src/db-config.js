@@ -104,7 +104,7 @@ for (let i in dataBases) {
     client.query(psql.createTable(client, i.name, i.columns));
 }
 
-process.on("SIGINT", () => {
+process.on("exit", () => {
     client.query(psql.closeClient);
     client.end();
 });

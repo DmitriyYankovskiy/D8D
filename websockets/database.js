@@ -1,7 +1,7 @@
 const psql = require("../modules/psql-express");
 const client = global.dbClient;
 
-module.exports.message = message => {
+exports.message = message => {
     let request = message.request;
     let response = {};
     switch (request.type) {
@@ -20,4 +20,4 @@ module.exports.message = message => {
             });      
     }
 };
-module.exports.close = () => {};
+exports.close = () => {};

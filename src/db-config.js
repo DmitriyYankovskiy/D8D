@@ -1,12 +1,13 @@
 const {Client} = require("pg");
 
-clinet = new Client({ 
+let client = new Client({ 
     user: global.config.user,
     host: global.config.host,
     database: global.config.database,
     password: global.config.password,
     port: global.config.port
 });
+console.log(client);
 client.connect();
 
 global.dbClient = client;
@@ -18,6 +19,7 @@ let dataBases = [
         name: "items",
         columns: {
             name: "varchar",
+            description: "varchar",
             class: "int",
             level: "varchar",
             race: "int",
@@ -95,13 +97,11 @@ let dataBases = [
 ]
 
 
-for (let i in dataBases) {
-    if (build.typeDB == "rebuild_tables") 
-    {
-        client.query(psql.dropTable(client, i.name));
+for (let i of dataBases) {
+    if (global.build.typeDB == "r") {
+        client.query(psql.dropTable(i.name));
+        client.query(psql.createTable(i.name, i.columns));
     }
-
-    client.query(psql.createTable(client, i.name, i.columns));
 }
 
 process.on("exit", () => {

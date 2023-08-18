@@ -1,9 +1,11 @@
 Create in D8D-directory file .d8dconfig:
 
 {
-	"dbpassword": "[database password]",
-	"dbuser": "postgres",
-	"dbhost": "localhost",
-	"dbport": 5432,
-	"dbname": "[database name]"
+	"db": {
+		"password": "[database password]",
+		"user": "postgres",
+		"host": "localhost",
+		"port": 5432,
+		"name": "[database name]"
+	}
 }

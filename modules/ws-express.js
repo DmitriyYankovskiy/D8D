@@ -1,6 +1,6 @@
 module.exports.set = (wsServer, controller) => {
     wsServer.on("connection", (ws, request) => {
-        console.log(`<wsServer> new client ${wsPort}`);
+        //console.log(`<wsServer> new client ${wsPort}`);
         
         ws.on("message", message => {
             let query = {};

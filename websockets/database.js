@@ -5,12 +5,11 @@ module.exports.message = message => {
     let request = message.request;
     let response = {};
     switch (request.type) {
-        case "search":
+        case "search" :
             let indexType = (request.id[0] == "#" ? "id" : "name");
             let findObject = request.findObject;
             
             return client.query(psql.getObject(
-                client,
                 findObject,
                 indexType,
                 request.id,

@@ -1,11 +1,8 @@
-let websocket = require(ws);
-
-module.exports.start = (wsPort, path,  controller) => {
-    let wss = new websocket.Server({port: wsPort, path: path});
-    wss.on("connection", (ws, request) => {
-        console.log(`<websocket> new client ${wsPort}`);
+module.exports.set = (wsServer, controller) => {
+    wsServer.on("connection", (ws, request) => {
+        console.log(`<wsServer> new client ${wsPort}`);
         
-        ws.on("message", message => {            
+        ws.on("message", message => {
             let query = {};
             query.request = JSON.parse(message.toString());            
             controller.message(query).then(() => ws.send(query.toString()));           
@@ -16,7 +13,7 @@ module.exports.start = (wsPort, path,  controller) => {
     process.on("SIGINT", () => {
         console.log("closing server");
 
-        wss.close(() => {
+        wsServer.close(() => {
             process.exit();
         });
     });

@@ -1,28 +1,24 @@
-let req = global.req;
+const psql = require("../modules/psql-express");
+const client = global.dbClient;
 
-const psqlm = global.req.psqlm;
-const client = global.db.client;
-
-module.exports = {
-    message: message => {
-        let request = message.request;
-        let response = {};
-        switch (request.type) {
-            case "search":
-                let indexType = (request.id[0] == "#" ? "id" : "name");
-                let findObject = request.findObject;
-                
-                return psqlm.getObject(
-                    client,
-                    findObject,
-                    indexType,
-                    request.id,
-                    request.things                    
-                ).then((r) => {
-                    response = JSON.stringify(r.rows);
-                    message.response = response;
-                });      
-        }
-    },
-    close: () => {}
+module.exports.message = message => {
+    let request = message.request;
+    let response = {};
+    switch (request.type) {
+        case "search":
+            let indexType = (request.id[0] == "#" ? "id" : "name");
+            let findObject = request.findObject;
+            
+            return client.query(psql.getObject(
+                client,
+                findObject,
+                indexType,
+                request.id,
+                request.things                    
+            )).then((r) => {
+                response = JSON.stringify(r.rows);
+                message.response = response;
+            });      
+    }
 };
+module.exports.close = () => {};

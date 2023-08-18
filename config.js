@@ -1,6 +1,6 @@
 global.__basedirname = __dirname;
-
 global.host = "localhost";
+global.dbClient;
 
 global.req = {};
 global.build = {};
@@ -16,8 +16,9 @@ global.req.os = require("os");
 
 global.req.ejs = require("ejs");
 
-global.req.psqlManager = require("./modules/psql-manager");
+global.req.psqlManager = require("./modules/psql-express");
 global.req.wsManager = require("./modules/ws-express");
 
 global.build.typeDB = process.argv[0];
 global.config = JSON.parse(global.req.fs.readFileSync(".d8dconfig", "utf8"));
+

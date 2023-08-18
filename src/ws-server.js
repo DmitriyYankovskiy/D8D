@@ -1,5 +1,9 @@
-const req = global.req;
-const server = global.server;
-const wsManager = req.wsManager;
+const PORT = 8777;
+const PATH = "/database";
 
-wsManager.start(server.wsPort, "/database", require("../websockets/database.js"));
+const ws = require(ws);
+const wsManager = require(wsManager);
+
+let wsServer = new ws.Server({port: PORT, path: PATH});
+
+wsManager.set(wsServer, require("../websockets/database.js"));

@@ -1,6 +1,16 @@
-const psqlManager = require("../modules/psql-manager");
+const {Client} = require("pg");
+clinet = new Client({ 
+    user: global.config.user,
+    host: global.config.host,
+    database: global.config.database,
+    password: global.config.password,
+    port: global.config.port
+});
+client.connect();
 
-global.psqlManager = psqlManager;
+global.dbClient = client;
+
+const psql = require("../modules/psql-express");
 
 let dataBases = [
     {
@@ -87,8 +97,13 @@ let dataBases = [
 for (let i in dataBases) {
     if (build.typeDB == "rebuild_tables") 
     {
-        psqlManager.dropTable(client, i.name);
+        client.query(psql.dropTable(client, i.name));
     }
 
-    psqlManager.createTable(client, i.name, i.columns);
+    client.query(psql.createTable(client, i.name, i.columns));
 }
+
+process.on("SIGINT", () => {
+    client.query(psql.closeClient);
+    client.end();
+});

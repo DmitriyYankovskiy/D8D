@@ -1,4 +1,4 @@
-exports.set = (wsServer, controller) => {
+module.exports.set = (wsServer, controller) => {
     wsServer.on("connection", (ws, request) => {
         ws.on("message", message => {
             let query = {};

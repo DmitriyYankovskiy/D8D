@@ -1,4 +1,4 @@
-exports.getObject = (tableName, key, value, columns) => {
+module.exports.getObject = (tableName, key, value, columns) => {
     let query = `SELECT `;
     for (let i in columns) {
         query += `${columns[i]}, `;
@@ -19,7 +19,7 @@ exports.getObject = (tableName, key, value, columns) => {
         
     return query;
 };
-exports.createTable = (tableName, typesOfColumns) => {
+module.exports.createTable = (tableName, typesOfColumns) => {
     let query = `CREATE TABLE ${tableName} (`;
     for (let i in typesOfColumns) {
         query += `${i} ${typesOfColumns[i]}, `;
@@ -31,17 +31,17 @@ exports.createTable = (tableName, typesOfColumns) => {
 
     return query;    
 };
-exports.dropTable = (tableName) => {
+module.exports.dropTable = (tableName) => {
     let query = `DROP TABLE ${tableName};`;
     
     return query; 
 };        
-exports.closeClient = () => {
+module.exports.closeClient = () => {
     console.log(`<database> end client`); 
     
     return ";";            
 };        
-exports.addObject = (tableName, newObject) => {
+module.exports.addObject = (tableName, newObject) => {
     let query = ` 
                 INSERT INTO ${tableName} (
                 `;
@@ -67,7 +67,7 @@ exports.addObject = (tableName, newObject) => {
     
     return query 
 };
-exports.deleteObject = (tableName, key, value = "") => {    
+module.exports.deleteObject = (tableName, key, value = "") => {    
     let query;
 
     if (typeof value == "string") value = `'${value}'`;
@@ -85,7 +85,7 @@ exports.deleteObject = (tableName, key, value = "") => {
     console.log('<database> strokes delete'); 
     return query;
 };        
-exports.setObject = (tableName, key, value, columns) => {    
+module.exports.setObject = (tableName, key, value, columns) => {    
     let query = `UPDATE ${tableName} SET `;
     for (let i in columns) {
         if (typeof columns[i] == "string") {

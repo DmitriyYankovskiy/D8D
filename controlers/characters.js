@@ -6,4 +6,4 @@ router.use("/create", (request, responce) => {
     "characters/layout.ejs"});
 });
 
-exports = router;
+module.exports = router;

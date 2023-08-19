@@ -14,7 +14,7 @@
             ],            
             "program": "src/app.js",
             "args": [
-                "not_rebuild_tables"
+                "r"
             ]
         }
     ]

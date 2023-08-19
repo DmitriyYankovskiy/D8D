@@ -1,14 +1,17 @@
 main {
 	background-color: #1C201F;
 }
-.character-shit-container {
+
+.character-sheet-container {
 	margin: 10px 0px;
 	background-color: #1C201D;
 	display: flex;
 	justify-content: center;
 	flex: 1;
+	height: 100%;
 }
-.character-shit {
+
+.character-sheet {
 	aspect-ratio: 2386/1342;
 	height: 100%;
 	background-color: #1C201F;
@@ -27,7 +30,8 @@ main {
 .name-block {
 	height: 7.3%;
 	background-color: #3F5B56;
-	padding: 0px 5%;
+	padding: var(--std-margin);
+	
 	display: flex;
 	align-items: center;
 }
@@ -56,29 +60,28 @@ main {
 	width: 100%;
 }
 
-.jbf {
+span {
 	font-family: "JetBrains Mono", monospace;
 }
-.ssf {
+
+input {
+	height: 100%;
+
 	font-family: 'Sofia Sans', sans-serif;
-}
 
-.name-text {
-	font-size: 20px;
-	color: #EFEFEF;
-	margin-right: 5px;
-}
-
-.name-input {
 	font-size: 20px;
 	outline: 0;
 	border: 0;
-	flex: 1;
-	height: 57%;
-	background-color: #4F6A65;
+
+	vertical-align: center;
+
+	background-color: #00000000;	
+}
+
+.main-text {
+	font-size: 30px;
 	color: #EFEFEF;
-	min-width: 0;
-	padding-left: 10px;
+	margin-right: 5px;
 }
 
 .right-side {
@@ -87,4 +90,13 @@ main {
 
 .top-side {
 	border-radius: 25px 25px 0px 0px;
+}
+
+.name-block > .side {
+	outline: 0;
+	border: 0;
+	flex: 1;	
+
+	height: 100%;
+	background-color: #4F6A65;
 }

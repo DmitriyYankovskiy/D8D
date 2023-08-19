@@ -99,6 +99,8 @@ let dataBases = [
 for (let i of dataBases) {
     if (global.build.typeDB == "r") {
         client.query(psql.dropTable(i.name));
+    }
+    if (global.build.typeDB == "r" || global.build.typeDB == "b") {
         client.query(psql.createTable(i.name, i.columns));
     }
 }

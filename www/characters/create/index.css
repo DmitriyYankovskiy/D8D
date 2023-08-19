@@ -1,13 +1,90 @@
 main {
-	padding: 30px;
+	background-color: #1C201F;
+}
+.character-shit-container {
+	margin: 10px 0px;
+	background-color: #1C201D;
+	display: flex;
+	justify-content: center;
+	flex: 1;
+}
+.character-shit {
+	aspect-ratio: 2386/1342;
+	height: 100%;
+	background-color: #1C201F;
 	display: flex;
 	justify-content: stretch;
-	align-items: stretch;
 }
 
-.character_shit {
+.first-column {
+	height: 100%;
+	width: 33.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.name-block {
+	height: 7.3%;
+	background-color: #3F5B56;
+	padding: 0px 5%;
+	display: flex;
+	align-items: center;
+}
+
+.prof-stats-block {
+	height: 69.4%;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.stats-column {
+	width: 49%;
+	height: 100%;
+	background-color: white;
+}
+
+.prof-column {
+	width: 48%;
+	height: 100%;
 	background-color: red;
+}
+
+.languages-block {
+	height: 20%;
+	width: 100%;
+}
+
+.jbf {
+	font-family: "JetBrains Mono", monospace;
+}
+.ssf {
+	font-family: 'Sofia Sans', sans-serif;
+}
+
+.name-text {
+	font-size: 20px;
+	color: #EFEFEF;
+	margin-right: 5px;
+}
+
+.name-input {
+	font-size: 20px;
+	outline: 0;
+	border: 0;
 	flex: 1;
-	display; flex;
-	justify-content: stretch;
+	height: 57%;
+	background-color: #4F6A65;
+	color: #EFEFEF;
+	min-width: 0;
+	padding-left: 10px;
+}
+
+.right-side {
+	border-radius: 0px 25px 25px 0px;
+}
+
+.top-side {
+	border-radius: 25px 25px 0px 0px;
 }

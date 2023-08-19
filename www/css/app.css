@@ -1,4 +1,4 @@
-html {
+/*html {
     --std-delay: 16px;
 }
 
@@ -42,6 +42,25 @@ body {
 
     height: 100vh;
     width: 100vw;
+}*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Sofia+Sans:ital,wght@1,300&display=swap');
+
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.top-bar {
+    height: 50px;
+    background-color: blue;
 }
 
 

@@ -2,11 +2,12 @@ main {
 	background-color: #1C201F;
 }
 
-.character-sheet-container {
-	margin: 10px 0px;
+.character-sheet-container {	
 	background-color: #1C201D;
+
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	flex: 1;
 	height: 100%;
 }
@@ -15,6 +16,7 @@ main {
 	aspect-ratio: 2386/1342;
 	height: 100%;
 	background-color: #1C201F;
+	
 	display: flex;
 	justify-content: stretch;
 }
@@ -24,8 +26,8 @@ main {
 	width: 33.5%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 }
+
 
 .name-block {
 	height: 7.3%;
@@ -81,7 +83,7 @@ input {
 .main-text {
 	font-size: 30px;
 	color: #EFEFEF;
-	margin-right: 5px;
+	margin-right: var(--std-margin);
 }
 
 .right-side {

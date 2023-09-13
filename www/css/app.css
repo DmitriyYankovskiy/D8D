@@ -29,12 +29,15 @@ main {
 .top-bar {
     height: 50px;
 
+    margin-bottom: var(--std-margin);
+
     background-color: blue;
 }
 
 
 
-.write-field {
+.field {
+	padding-left: var(--std-margin);
 	height: 100%;
 
 	font-family: 'Sofia Sans', sans-serif;
@@ -49,18 +52,17 @@ main {
 }
 
 .title {
+    margin-right: var(--std-margin);
+
 	font-family: "JetBrains Mono", monospace;
 }
 
 .main-text {
-    margin-right: var(--std-margin);
-
 	font-size: 30px;
 	color: #EFEFEF;	
 }
 
 .sub-text {
-	margin-right: var(--std-margin);
 
 	font-size: 30px;
 	color: #959595;
@@ -81,5 +83,5 @@ main {
 	border: 0;
 	flex: 1;	
 	
-	background-color: #FFFFFF10;
+	background-color: #FFFFFF15;
 }

@@ -1,25 +1,28 @@
 .character-sheet-container {	
-	background-color: #1C201D;
+	height: 100%;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex: 1;
-	height: 100%;
+
+	background-color: #1C201D;
 }
 
 .character-sheet {
-	aspect-ratio: 2386/1342;
 	height: 100%;
-	background-color: #1C201F;
+	aspect-ratio: 2386/1342;
 	
 	display: flex;
 	justify-content: stretch;
+
+	background-color: #1C201F;
 }
 
 .first-column {
 	height: 100%;
 	width: 33.5%;
+
 	display: flex;
 	flex-direction: column;
 }
@@ -27,16 +30,20 @@
 
 .name-block {
 	height: 7.3%;
-	background-color: #3F5B56;
+
 	padding: var(--std-margin);
+	margin-bottom: var(--std-margin);
 	
 	display: flex;
 	align-items: center;
+
+	background-color: #3F5B56;
 }
 
 .prof-stats-block {
 	height: 69.4%;
 	width: 100%;
+
 	display: flex;
 	justify-content: space-between;
 }
@@ -44,12 +51,14 @@
 .stats-column {
 	width: 49%;
 	height: 100%;
+
 	background-color: white;
 }
 
 .prof-column {
 	width: 48%;
 	height: 100%;
+
 	background-color: red;
 }
 

@@ -1,7 +1,3 @@
-main {
-	background-color: #1C201F;
-}
-
 .character-sheet-container {	
 	background-color: #1C201D;
 
@@ -60,45 +56,4 @@ main {
 .languages-block {
 	height: 20%;
 	width: 100%;
-}
-
-span {
-	font-family: "JetBrains Mono", monospace;
-}
-
-input {
-	height: 100%;
-
-	font-family: 'Sofia Sans', sans-serif;
-
-	font-size: 20px;
-	outline: 0;
-	border: 0;
-
-	vertical-align: center;
-
-	background-color: #00000000;	
-}
-
-.main-text {
-	font-size: 30px;
-	color: #EFEFEF;
-	margin-right: var(--std-margin);
-}
-
-.right-side {
-	border-radius: 0px 25px 25px 0px;
-}
-
-.top-side {
-	border-radius: 25px 25px 0px 0px;
-}
-
-.name-block > .side {
-	outline: 0;
-	border: 0;
-	flex: 1;	
-
-	height: 100%;
-	background-color: #4F6A65;
 }

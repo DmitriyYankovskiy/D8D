@@ -7,6 +7,16 @@
 
 input {
 	width: 100%;
+
+	padding-left: var(--std-margin);
+	height: 100%;
+
+	outline: 0;
+	border: 0;
+
+	vertical-align: center;
+
+	background-color: #00000000;	
 }
 
 html {
@@ -40,22 +50,6 @@ main {
 }
 
 
-
-.writed {
-	padding-left: var(--std-margin);
-	height: 100%;
-
-	font-family: 'Sofia Sans', sans-serif;
-
-	font-size: 1,85vh;
-	outline: 0;
-	border: 0;
-
-	vertical-align: center;
-
-	background-color: #00000000;	
-}
-
 .title {
     margin-right: var(--std-margin);
 
@@ -84,6 +78,10 @@ main {
 	outline: 0;
 	border: 0;
 	flex: 1;	
+
+	font-family: 'Sofia Sans', sans-serif;
+
+	font-size: 1,85vh;
 	
 	background-color: #FFFFFF15;
 }

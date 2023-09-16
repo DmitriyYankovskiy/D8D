@@ -3,7 +3,21 @@
 
 * {
     box-sizing: border-box;
+
+	font: inherit;
+	color: inherit;
 }
+
+html {
+    --std-margin: 1vh; /*.388*/
+    --std-radius: 2.315vh;
+
+	--std-block-color: #151816;
+
+	--head-font-size: 2.777vh;
+	--main-font-size: 1.514vh;
+}
+
 
 input {
 	width: 100%;
@@ -14,16 +28,9 @@ input {
 	outline: 0;
 	border: 0;
 
-	vertical-align: center;
+	vertical-align: center;	
 
 	background-color: #00000000;	
-}
-
-html {
-    --std-margin: 1vh; /*.388*/
-    --std-radius: 2.315vh;
-
-	--std-block-color: #151816;
 }
 
 body {
@@ -53,23 +60,9 @@ main {
 .title {
     margin-right: var(--std-margin);
 
+	font-size: var(--main-font-size);
 	font-family: "JetBrains Mono", monospace;
-}
-
-.head-text {
-	font-size: 2.777vh;
-	color: #EFEFEF;	
-}
-
-.main-text {
-	font-size: 1.514vh;
-	color: #EFEFEF;	
-}
-
-.sub-text {
-
-	font-size: 1.514vh;
-	color: #959595;
+	color: #EFEFEF;
 }
 
 .field {
@@ -80,8 +73,24 @@ main {
 	flex: 1;	
 
 	font-family: 'Sofia Sans', sans-serif;
-
-	font-size: 1,85vh;
+	font-size: var(--main-font-size);
+	color: #EFEFEF;
 	
 	background-color: #FFFFFF15;
 }
+
+.head-text {
+	font-size: var(--head-font-size);
+	color: #EFEFEF;	
+}
+
+.main-text {
+	font-size: var(--main-font-size);
+	color: #EFEFEF;	
+}
+
+.sub-text {
+	font-size: var(--main-font-size);
+	color: #959595;
+}
+

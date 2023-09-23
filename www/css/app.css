@@ -9,11 +9,13 @@
 }
 
 html {
-    --std-margin: 1vh; /*.388*/
+    --std-margin: 1.1vh; /*.388*/
     --std-radius: 2.315vh;
 
 	--std-block-color: #151816;
+	--blue-block-color: #272F44;
 
+	--mega-font-size: 4vh;
 	--head-font-size: 2.777vh;
 	--main-font-size: 1.514vh;
 }
@@ -59,14 +61,21 @@ main {
 
 .title {
     margin-right: var(--std-margin);
+	
+	display: flex; 
+	align-items: center;	
 
 	font-size: var(--main-font-size);
 	font-family: "JetBrains Mono", monospace;
+
+	line-height: 1.05;
+
 	color: #EFEFEF;
 }
 
 .field {
     height: 100%;
+	width: 100%;
 
 	outline: 0;
 	border: 0;
@@ -94,3 +103,36 @@ main {
 	color: #959595;
 }
 
+.square-block {
+	width: calc((100% - var(--std-margin)) / 2);	
+	aspect-ratio: 1/1;
+
+	margin-right: var(--std-margin);
+	padding: var(--std-margin);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-items: center;
+}
+
+.square-block > .title {
+	height: calc(var(--main-font-size) * 1.6);
+	width: 100%;
+
+	margin: 0;
+
+	flex: 0 0 auto;
+}
+
+.square-block > .field {
+	height: 100%;
+
+	border-radius: 0 0 var(--std-radius) var(--std-radius);
+}
+
+.square-block > .field > input {
+	text-align: center;
+	padding: 0;
+	font-size: var(--mega-font-size);
+}

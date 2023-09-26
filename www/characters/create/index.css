@@ -59,7 +59,7 @@
 
 
 .prof-stats-block {
-	height: 69.4%;
+	/*height: 69.4%;*/
 	width: 100%;
 
 	display: flex;
@@ -68,7 +68,8 @@
 
 .stats-column {
 	flex: 1 0 0;
-	height: 100%;
+	/*height: 100%;*/
+	height: fit-content;
 	margin-right: var(--std-margin);
 }
 
@@ -146,7 +147,7 @@
 
 .params > * {
 	width: 100%; 
-
+	overflow: hidden;
 	margin-bottom: var(--std-margin);
 
 	display: flex;
@@ -154,14 +155,17 @@
 }
 
 .params > * > * {	
-	border-radius: var(--std-radius) 0 0 var(--std-radius);
-
 	background-color: var(--blue-block-color);
 }
 .params > * > *:last-child {
-	border-radius: 0 var(--std-radius) var(--std-radius) 0;
-
 	margin-right: 0;
+}
+
+.params > *:first-child {	
+	border-radius: var(--std-radius) var(--std-radius) 0 0 ;
+}
+.params > *:last-child {
+	border-radius: 0 0 var(--std-radius) var(--std-radius);
 }
 
 .prof-column {
@@ -207,6 +211,7 @@
 }
 
 .languages-block {
-	height: 20%;
+	/*height: 20%;*/
+	flex: 1;
 	width: 100%;
 }
